@@ -1,0 +1,2 @@
+# GReza
+A GRUB theme.
