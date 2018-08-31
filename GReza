@@ -1,4 +1,5 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
 set -e
 
 # This script installs the GRUB2 theme in /boot/grub/themes/, /boot/grub2/themes/ or /grub/themes/
@@ -76,14 +77,18 @@ mkConfig_File=$(which ${Grub_Dir##*/}-mkconfig) || \
 
 # Ask for desired resolution if set to "any"
 if [[ $Theme_Resolution = "any" ]]; then
-	echo ""
-	echo "Enter desired resolution in the form of 1024x768, 800x600, 1600x1200, etc."
-	echo "Also, only choose a resolution that is supported by your VESA BIOS Extensions"
-	echo "which can be found by installing the hwinfo package, and running hwinfo --framebuffer,"
-	echo "or by running vbeinfo at grub's command line. The outputs may vary."
-	echo ""
-	echo -n "Enter desired resolution: "
-	read Theme_Resolution
+	Theme_Resolution=$(xdpyinfo | awk '/dimensions/{print $2}')
+    width=$(echo $Theme_Resolution | awk -Fx '{print $1}')
+	height=$(echo $Theme_Resolution | awk -Fx '{print $2}')
+
+	# syntax to resize -- send width and height as arguments
+	# to edit the code, make changes in ImgResize.java
+	javac ImgResize.java
+	java ImgResize $width $height
+	if [ $? -ne 0 ]
+	then
+	    exit
+	fi
 fi
 
 # Create theme directory.  If directory already exists, ask the user if they would like
