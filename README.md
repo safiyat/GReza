@@ -19,3 +19,11 @@ sudo ./GReza
 5) To change the order or the names of the menu items in bootloader, edit `/boot/grub/grub.cfg`.
 6) In case an icon is missing, add `--class <icon_name>` to the line containing the menu item. For example:
 `submenu 'Advanced menu for Ubuntu' --class submenu`... will put the image file `submenu` as the icon of this item.
+
+**Files you can consider editing other than `grub.cfg`**
+1) ImgResize.java
+2) TextToGraphics.java
+3) GReza
+
+PS: You do not need to recompile `.java` files in order to see changes.
+
