@@ -31,6 +31,6 @@ Please be cautious while editing `grub.cfg`.
 PS: You do not need to recompile `.java` files in order to see changes.
 
 # Preview
-![Preview](https://imgur.com/8LPgmMD)
+![Preview](https://i.imgur.com/8LPgmMD.jpg)
 
 
