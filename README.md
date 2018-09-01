@@ -1,7 +1,17 @@
 # GReza
-A GRUB theme customization App.
+A GRUB theme customization App for Linux
 
-Tips on customization:
+**Requirements:**
+Java
+
+**To use this app, enter the following commands in your terminal:**
+```
+git clone https://github.com/AseedUsmani/GReza.git 
+cd GReza
+sudo ./GReza
+```
+
+**Tips on customization:**
 1) The script will ask for an image path, it can be an internet URL or a local path.
 2) The color of the custom message you enter is in RGB, where `#FFFFFF` is white and `#000000` is black. Enter a blank message to remove the image.
 3) The bootloader images (background and selected) are determined by `select_bkg_\*.png` and `select_bg_\*.png`; where c stands for center, n, ne, s etc stands for North, North-East, South etc. Same rule applies to terminal background.
