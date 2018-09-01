@@ -196,6 +196,4 @@ if [[ $Response = yes || $Response = y ]]; then
 	fi
 
 fi
-
-
 exit 0
