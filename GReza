@@ -83,8 +83,25 @@ if [[ $Theme_Resolution = "any" ]]; then
 
 	# syntax to resize -- send width and height as arguments
 	# to edit the code, make changes in ImgResize.java
+
+	java -version
+	if [ $? -ne 0 ]
+	then
+	    echo "Java is not installed or not in the system path. Exiting now..."
+	    exit 1
+    fi
+
 	javac ImgResize.java
-	java ImgResize $width $height
+	echo "Enter background image path (Ctrl+Shift+V to paste): "
+	read path
+	java ImgResize $width $height "$path"
+	echo
+	echo "Enter message text (Use @ for new line):  "
+	read text
+	echo "Enter text color in RGB (#000000 is black, #FFFFFF is white): "
+	read color
+	javac TextToGraphics.java
+	java TextToGraphics "$text" "$color"
 	if [ $? -ne 0 ]
 	then
 	    exit
@@ -163,6 +180,22 @@ if [[ $Response = yes || $Response = y ]]; then
 		sed "s,^#\?GRUB_THEME=.*,GRUB_THEME=$Theme_Dir/$Theme_Definition_File," <$Grub_File >$Grub_File.~
 		mv $Grub_File.~ $Grub_File
 	fi	
-	$($mkConfig_File -o $Grub_Dir/grub.cfg)	# Generate new grub.cfg
+	$($mkConfig_File -o $Grub_Dir/grub.cfg) # Generate new grub.cfg
+
+	# to add icons to Advanced menu and System setup
+	chmod -R 644 /boot/grub/grub.cfg
+	sed -i -e "s/submenu \(.*\)\$menu/submenu \1 --class submenu \$menu/g" /boot/grub/grub.cfg
+    sed -i "s/menuentry 'System setup'/menuentry 'System setup' --class settings/g" /boot/grub/grub.cfg
+	echo
+	echo "New Grub Theme added. Changes will apply on reboot."
+	echo "Do you want to reboot now? Enter Yes to reboot."
+	read reboot_response
+	if [ "$reboot_response" = "Yes" ]
+	then
+	    reboot
+	fi
+
 fi
+
+
 exit 0

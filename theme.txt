@@ -18,23 +18,22 @@ terminal-font: "Fixed Regular 13"
 
 # Show the boot menu
 + boot_menu {
-		left = 0
+		left = 10
 		width = 50%
 		top = 0
 		height = 100%
 		item_font = "ComfortaaRegular 16"
 		selected_item_font = "ComfortaaRegular 16"
 		item_color = "#f5f5f5"
-		item_style = "bold"
 		selected_item_color = "#333333"
 		item_height = 56
-		item_padding = 10
-		item_spacing = 20
+		item_padding = 100
+		item_spacing = 10
 		icon_width = 36
 		icon_height = 36
 		item_icon_space = 15
-		selected_item_pixmap_style= "background.png"
-		menu_pixmap_style = "background.png"
+		selected_item_pixmap_style= "select_bkg_*.png"
+		menu_pixmap_style = "menu_bkg_*.png"
 		scrollbar = false
 		scrollbar_width = 17
 		scrollbar_thumb = "sb_thumb_*.png"

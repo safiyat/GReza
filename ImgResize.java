@@ -7,16 +7,11 @@ import java.net.*;
 
 public class ImgResize {
 
-    public static void main(String args[]) throws IOException {
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
+    public static void main(String args[]) {
 
         int width = Integer.parseInt(args[0]);
         int height = Integer.parseInt(args[1]);
-
-        System.out.print("Enter the image path (Ctrl+Shift+V to paste): ");
-        String path = br.readLine();
-        System.out.println();
+        String path = args[2];
 
         BufferedImage newImage;
         Image image;
