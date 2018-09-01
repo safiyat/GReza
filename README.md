@@ -8,4 +8,4 @@ Tips on customization:
 4) You can edit theme.txt for further customization.
 5) To change the order or the names of the menu items in bootloader, edit `/boot/grub/grub.cfg`.
 6) In case an icon is missing, add `--class <icon_name>` to the line containing the menu item. For example:
-`submenu 'Advanced menu for Ubuntu' --class submenu ...` will put the image file `submenu` as the icon of this item.
+`submenu 'Advanced menu for Ubuntu' --class submenu`... will put the image file `submenu` as the icon of this item.
